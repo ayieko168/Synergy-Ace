@@ -1,3 +1,4 @@
+import pynput
 import pyperclip as pp
 import time
 import random, string
@@ -16,8 +17,9 @@ soct.connect((server_ip, PORT))
 
 while True:
     try:
-        data = soct.recv(1024)
-        print(f"add {data.decode('utf-8')} to clipboard")
+        data = soct.recv(1024).decode('utf-8')
+        print(f"add {data} to clipboard")
+        pp.copy(data)
     except KeyboardInterrupt:
         break
     
